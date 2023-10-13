@@ -1,0 +1,90 @@
+*********************************
+Create an Instance name Webserver
+*********************************
+
+* Connect to an instance
+# ssh -i nick.pem ubuntu@public ip
+
+* update 
+# sudo apt update 
+
+* install apache2 webserver
+# sudo apt install apache2 -y
+
+* Check the apache2 webserver status
+# sudo service apache2 status
+
+> Go to root of web server
+# cd /var/www/html
+# ls
+
+>it will show file named index.html delete that file 
+# sudo rm index.html
+
+> Create New file named index.html and write This is my custom code
+# sudo nano index.html
+
+>Check weather text is visible or not for that copy the public ip and paste
+
+> For Creating the AMi select the instance go in action select image and templates then select create image option
+then image named webserver image  then discription for creating webservers
+
+> No Reboot option is used to not to reboot
+
+> when you create an ami it will auto create a snapshot
+
+> Go in AMI select the AMI then luch instance from AMI name it as from ami
+
+> Select the ami then copy pest the public ip of from ami and check weather it showning this is our custom code
+
+* Fist update & then Install AWS CLI
+# sudo apt update 
+# sudo apt install awscli -y
+
+* To Check awscli install properly or not 
+# aws help
+
+* Check there is any bukets available or not in s3
+# aws s3 ls
+
+> Go in security creditals and create access key
+
+* config aws 
+# aws configure
+
+* to see buket 
+# aws s3 ls
+
+* to check the containts in the buket 
+# aws s3 ls buketname
+
+* to copy file 
+# ls 
+# sudo nano abc and put any text inside it
+# aws s3 cp abc s3://name of buket/
+
+> go s3 check file named abc is available or not 
+
+#whatis ll
+# ll 
+# ls -al
+# cd .aws
+# ll
+# cat creditals
+
+> Terminate the instance and delete the key credtials
+
+> Go IAM create role 
+1 trusted entity type aws service 
+2 use case EC2
+3 on next page permission policies aws s3 fullaccess
+4 name for the role s3-access
+5 create the role
+
+> go in instance select the instance from ami then action security  modefy iam role select role s3access
+then connect using public ip 
+# ssh -i nick.pem ubuntu@public ip of from ami 
+# sudo apt update
+# sudo apt install awscli -y 
+# aws help 
+# aws s3 ls 
